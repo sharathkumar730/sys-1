@@ -1,0 +1,15 @@
+environment:
+   database:
+      hostname: "SQLD10747"
+      dbname: "ENTPRS_CLAIMS_DM"
+      port: "4242"
+      
+   http:
+      listener:
+         base-uri: "/v2/tests/"
+         resources: "mylogger/*"
+         port: "8081"      
+          
+apiID: "15701672"
+
+

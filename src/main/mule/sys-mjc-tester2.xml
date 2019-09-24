@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="942685fb-13bb-40b0-995c-f09487bdc6be" basePath="${environment.http.listener.base-uri}">
+		<http:listener-connection host="0.0.0.0" port="${environment.http.listener.port}" />
+	</http:listener-config>
+	<configuration-properties doc:name="app-Configuration properties" doc:id="1441b58a-b272-43d8-a41e-3ab16d5c0f5f" file="app.yaml" />
+	<configuration-properties doc:name="env-Configuration properties" doc:id="1f2ea2ef-41aa-4ac7-a8f9-fa1aad7bf4c0" file="properties/${mule.env}.yaml" />
+	<flow name="sys-mjc-tester2Flow" doc:id="a25ce4e7-d409-4e5c-b1f5-4ded348e5700" >
+		<http:listener doc:name="Listener" doc:id="5c350eef-9530-4060-9984-2e4f19852a0f" config-ref="HTTP_Listener_config" path="${environment.http.listener.resources}"/>
+		<logger level="INFO" doc:name="Logger" doc:id="14ef1959-e5fb-4243-a5af-bb193f9cdd34" message='#[message.payload]'/>
+		<set-payload value='#["DONE!"]' doc:name="Set Payload" doc:id="639ed951-cb7f-4b70-a170-98ba25d350dd" />
+	</flow>
+</mule>

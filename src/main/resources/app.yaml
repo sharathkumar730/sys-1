@@ -1,0 +1,7 @@
+json:
+   logger:
+      application:
+         name: "sys-mjc-tester2"
+         version: "1.0.0"
+      disabled:
+         fields: "null" 
